@@ -1,0 +1,22 @@
+.app-profile {
+  display: flex;
+}
+
+.app-posts {
+  width: 400px;
+}
+
+.app-profile__comments {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-profile__action {
+  width: 100%;
+  height: 56px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 10px;
+}

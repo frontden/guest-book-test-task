@@ -1,27 +1,33 @@
-# GuestBook
+https://guest-book.naveksoft.com/docs
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.2.
+Создать гостевую книгу, где пользователи могут оставлять свои отзывы, а также дополнять свои же отзывы в комментариях.
 
-## Development server
+Создать страницу авторизации пользователя с полями email, password . Использовать валидацию. (см. документацию)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Создать страницу регистрации пользователя с полями avatar, name, email, password, password confirmation. Использовать валидацию (см. документацию)
 
-## Code scaffolding
+При успешной авторизации или регистрации перейти на страницу профиля, где :
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- отображены первые 15 отзывов. На сервере используется пагинация.  (см. документацию)
 
-## Build
+- каждый отзыв отображает информацию об авторе отзыва ( avatar (если есть), name, email ) , текст отзыва и заголовок отзыва.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- каждый комментарий отображает информацию об авторе комментария ( avatar (если есть), name, email ) , текст комментария.
 
-## Running unit tests
+- по клику на отзыв или на кнопку под отзывом отображается пагинированный список комментариев отзыва.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Пользователь:
 
-## Running end-to-end tests
+- может создавать отзыв, удалять ТОЛЬКО СВОЙ отзыв.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+- видит все отзывы и комментарии на отзывы.
 
-## Further help
+- может комментировать ТОЛЬКО СВОЙ отзыв, удалять ТОЛЬКО СВОИ комментарии.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Администратор:
+
+- может создавать отзыв и удалять ВСЕ отзывы.
+
+- видит все отзывы и комментарии на отзывы.
+
+- может комментировать ВСЕ отзывы, удалять ВСЕ комментарии.

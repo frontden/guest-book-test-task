@@ -1,0 +1,18 @@
+.app-post {
+  width: 400px;
+  margin: 10px;
+  :hover {
+    cursor: pointer;
+  }
+}
+
+.app-post__title {
+  max-width: 200px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.app-post__avatar {
+  background-size: cover;
+}

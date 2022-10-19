@@ -1,0 +1,19 @@
+<mat-card class="app-post" *ngIf="data" (click)="onPostClicked()">
+  <mat-card-header>
+    <div mat-card-avatar
+         class="app-post__avatar"
+         *ngIf="avatar$ | async as avatar"
+         [style.background-image]="avatar"></div>
+    <mat-card-title class="app-post__title">{{data.user.name}}</mat-card-title>
+    <mat-card-subtitle>{{data.user.email}}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <h2>{{data.title}}</h2>
+    <p>
+      {{data.message}}
+    </p>
+  </mat-card-content>
+  <mat-card-actions *ngIf="isDeleteAllowed">
+    <button mat-button (click)="onDeleteButtonClicked($event)">Delete</button>
+  </mat-card-actions>
+</mat-card>

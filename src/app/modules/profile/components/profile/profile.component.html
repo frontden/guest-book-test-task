@@ -1,0 +1,61 @@
+<div class="app-profile" *ngIf="profileData$ | async as profileData">
+
+  <div class="app-profile__posts">
+    <mat-paginator #postPaginator
+                   [length]="profileData.pagination.total"
+                   [showFirstLastButtons]="true"
+                   [pageIndex]="profileData.pagination.currentPage - 1"
+                   [pageSize]="profileData.pagination.perPage"
+                   [hidePageSize]="true"
+                   (page)="onPageChanged($event)"
+                   aria-label="Select posts page">
+    </mat-paginator>
+
+    <app-post *ngFor="let post of profileData.posts; trackBy: trackByFn"
+              [post]="post"
+              [isDeleteAllowed]="checkPossibilityDeletePost(post)"
+              (deleted)="deletePost(post.id)"
+              (clicked)="showComments(post.id, post.userId)">
+
+    </app-post>
+  </div>
+
+  <div class="app-profile__comments">
+
+      <div class="app-profile__action">
+        <button mat-button (click)="createPost()">new post</button>
+      </div>
+
+
+      <ng-container *ngIf="commentsData$ | async as commentsData">
+
+        <app-comment *ngFor="let comment of commentsData.comments; trackBy: trackByFn"
+                     [comment]="comment"
+                     [isDeleteAllowed]="checkPossibilityDeleteComment(comment)"
+                     (deleted)="deleteComment(comment.id)">
+        </app-comment>
+
+        <mat-paginator #commentPaginator
+                       [length]="commentsData.pagination.total"
+                       [showFirstLastButtons]="true"
+                       [pageIndex]="commentsData.pagination.currentPage - 1"
+                       [pageSize]="commentsData.pagination.perPage"
+                       [hidePageSize]="true"
+                       (page)="onCommentPageChanged($event)"
+                       aria-label="Select comments page">
+        </mat-paginator>
+
+        <app-new-comment *ngIf="checkPossibilityAddComment()" (create)="createComment($event)"></app-new-comment>
+
+      </ng-container>
+
+
+  </div>
+
+
+</div>
+
+
+
+
+

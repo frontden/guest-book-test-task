@@ -1,0 +1,24 @@
+<form class="form" [formGroup]="form" (ngSubmit)="form.valid && onPostButtonClicked(form.value)">
+
+  <mat-form-field class="form-element">
+    <mat-label>Message</mat-label>
+    <textarea matInput
+              rows="5"
+              cols="20"
+              [formControlName]="'message'"
+              [errorStateMatcher]="matcher"
+              #message></textarea>
+
+    <mat-error *ngIf="messageCtrl?.hasError('maxlength')
+                      && !messageCtrl?.hasError('required')">
+      Max length is {{ messageCtrl?.errors?.['maxlength']?.['requiredLength']}}
+    </mat-error>
+
+    <mat-error *ngIf="messageCtrl?.hasError('required')">
+      Message is required
+    </mat-error>
+  </mat-form-field>
+
+
+  <button mat-raised-button color="primary" [disabled]="form.invalid">post</button>
+</form>
